@@ -15,7 +15,7 @@ class ProductModel(models.Model):
 
     name = models.CharField(max_length=50)
     item_type = models.CharField(max_length=1, default=ItemType.PHYSICAL, choices=ItemType)
-    status = models.CharField(max_length=1, choices=StatusType, default='True')
+    status = models.CharField(max_length=1, choices=StatusType, default=StatusType.SHOW)
     title = models.CharField(max_length=150)
     image = models.ImageField(upload_to='images/', blank=True)
     keyword = models.CharField(max_length=255, blank=True)
