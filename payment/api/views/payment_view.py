@@ -72,7 +72,6 @@ class Payment(APIView):
         }
 
         checkout_form_initialize = iyzipay.CheckoutFormInitialize().create(request, PAYMENT_OPTIONS)
-
         # print(checkout_form_initialize.read().decode('utf-8'))
         page = checkout_form_initialize
         header = {'Content-Type': 'application/json'}
