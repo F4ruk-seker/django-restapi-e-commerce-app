@@ -6,10 +6,16 @@ from products.api.serializers.product_category_serializer import ProductCategory
 
 class ProductSerializer(serializers.ModelSerializer):
     images = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     category = ProductCategorySerializer()
 
-    def get_images(self, obj):
-        return ProductImageSerializer(obj.images_gallery, many=True).data
+    @staticmethod
+    def get_image(obj):
+        return ProductImageSerializer(obj.image).data
+
+    @staticmethod
+    def get_images(obj):
+        return ProductImageSerializer(obj.images_gallery.order_by('row'), many=True).data
 
     class Meta:
         model = ProductModel

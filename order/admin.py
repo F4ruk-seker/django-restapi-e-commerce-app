@@ -34,10 +34,3 @@ class OrderProductAdmin(admin.ModelAdmin):
     list_display: tuple = 'user', 'product', 'price', 'quantity', 'amount'
     list_filter: list = 'user',
 
-
-# Register your models here.
-# admin.site.register(Favorite)
-# admin.site.register(Order)
-# admin.site.register(OrderProduct)
-# admin.site.register(ShopCart)
-

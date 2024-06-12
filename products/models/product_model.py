@@ -17,7 +17,7 @@ class ProductModel(models.Model):
     item_type = models.CharField(max_length=1, default=ItemType.PHYSICAL, choices=ItemType)
     status = models.CharField(max_length=1, choices=StatusType, default=StatusType.SHOW)
     title = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='images/', blank=True)
+    # image = models.ImageField(upload_to='images/', blank=True)
     keyword = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
@@ -30,11 +30,18 @@ class ProductModel(models.Model):
     slug = models.SlugField(unique=True)
 
     @property
+    def image(self):
+        return self.images_gallery[0]
+
+    @property
     def images_gallery(self):
         return ProductImage.objects.filter(product=self)
 
     def image_tag(self):
-        return mark_safe('<img src="{}" width="50px" height="50px" style="object-fit:cover;">'.format(self.image.url))
+        if image_model := self.image:
+            return mark_safe(f'<img src="{image_model.image.url}" width="50px" height="50px" style="object-fit:cover">')
+        else:
+            return mark_safe('<span style="color:red">None</span>')
 
     image_tag.short_description = 'Image'
 

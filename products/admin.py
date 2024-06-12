@@ -49,6 +49,7 @@ class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 5
     readonly_fields = 'image_tag',
+    sortable_by = 'row'
 
 
 @admin.register(ProductModel)

@@ -6,4 +6,5 @@ class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImage
         fields: tuple = 'title', 'image'
+        ordering: list = 'row',
 
