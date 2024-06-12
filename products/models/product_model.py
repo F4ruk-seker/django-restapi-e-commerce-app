@@ -35,7 +35,7 @@ class ProductModel(models.Model):
 
     @property
     def images_gallery(self):
-        return ProductImage.objects.filter(product=self)
+        return ProductImage.objects.filter(product=self).order_by('row')
 
     def image_tag(self):
         if image_model := self.image:

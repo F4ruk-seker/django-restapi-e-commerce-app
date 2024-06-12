@@ -15,7 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_images(obj):
-        return ProductImageSerializer(obj.images_gallery.order_by('row'), many=True).data
+        return ProductImageSerializer(obj.images_gallery, many=True).data
 
     class Meta:
         model = ProductModel
