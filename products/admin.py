@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
-from .models import Category, ProductImage, ProductModel
+from .models import Category, ProductImage, ProductModel, CommentModel
 
 # admin.site.register(Comment)
 
@@ -65,3 +65,5 @@ class ProductAdmin(admin.ModelAdmin):
 class ImagesAdmin(admin.ModelAdmin):
     list_display = 'title', 'product', 'image_tag'
     readonly_fields = 'image_tag',
+
+admin.site.register(CommentModel)

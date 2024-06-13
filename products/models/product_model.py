@@ -24,10 +24,14 @@ class ProductModel(models.Model):
     amount = models.IntegerField(default=0)
     details = models.TextField(null=True, blank=True, default=None)
     category = models.ForeignKey('products.Category', on_delete=models.CASCADE)
+    comments = models.ManyToManyField('products.CommentModel', default=None, blank=True, null=True)
+    # comments =
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     slug = models.SlugField(unique=True)
+
+    # def ra
 
     @property
     def image(self):
@@ -47,5 +51,3 @@ class ProductModel(models.Model):
 
     def __str__(self):
         return self.title
-
-

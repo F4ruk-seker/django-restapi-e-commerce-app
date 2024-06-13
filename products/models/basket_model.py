@@ -11,5 +11,3 @@ class BasketModel(models.Model):
     def get_total_price(self):
         total_price = self.products.aggregate(total_price=models.Sum('price'))['total_price']
         return total_price or 0.0
-
-
