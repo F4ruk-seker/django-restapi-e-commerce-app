@@ -24,7 +24,7 @@ class ProductModel(models.Model):
     amount = models.IntegerField(default=0)
     details = models.TextField(null=True, blank=True, default=None)
     category = models.ForeignKey('products.Category', on_delete=models.CASCADE)
-    comments = models.ManyToManyField('products.CommentModel', default=None, blank=True, null=True)
+    # comments = models.ManyToManyField('products.CommentModel', default=None, blank=True, null=True)
     # comments =
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
